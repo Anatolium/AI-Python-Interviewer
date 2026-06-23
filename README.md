@@ -1,7 +1,7 @@
-# PythonPro-Interviewer
-PythonPro Interviewer is a bot-trainer that will help you prepare for an interview for a Python developer position. The bot asks Python-related questions and checks your answers, helping you sharpen your skills and get ready for real interviews.
+# Python-Interviewer
+Python Interviewer is a bot-trainer that will help you prepare for an interview for a Python developer position. The bot asks Python-related questions and checks your answers, helping you sharpen your skills and get ready for real interviews.
 
-PythonPro Interviewer — это Telegram-бот для подготовки к собеседованиям на позицию Python-разработчика. Бот задает вопросы по Python, проверяет текстовые и голосовые ответы с помощью OpenAI GPT-4o и Whisper API, помогая оттачивать навыки и готовиться к реальным интервью. Вопросы хранятся в базе данных SQLite и загружаются из CSV-файла.
+Python Interviewer — это Telegram-бот для подготовки к собеседованиям на позицию Python-разработчика. Бот задает вопросы по Python, проверяет текстовые и голосовые ответы с помощью OpenAI GPT-4o и Whisper API, помогая оттачивать навыки и готовиться к реальным интервью. Вопросы хранятся в базе данных SQLite и загружаются из CSV-файла.
 
 ## Ключевые технологии
 - **Бэкенд:** Python 3.8+
@@ -19,7 +19,7 @@ PythonPro Interviewer — это Telegram-бот для подготовки к 
 >WHISPER_PROMPT = ('Jupyter, Anaconda, PostgreSQL, MySQL, SQLite, Redis, MongoDB, GraphQL, Jenkins, TravisCI, CircleCI, GitLab, Bitbucket, Heroku, DigitalOcean, Netlify, Vercel, Shell, PowerShell, CommandLine, CLI, IDE, VSCode, IntelliJ, DevOps, CI/CD, UnitTesting, TDD, BDD, Cypress, Mocha, Jest, Chai, Jasmine, Webpack, Babel, ESLint, Prettier, Flask, Django, TensorFlow, PyTorch, SciPy, Keras, OpenCV, ScikitLearn, FastAPI, Celery, Docker, AWS, Azure, Lambda, Serverless, Terraform, Ansible, SOLID, DRY, KISS, YAGNI, MVC, MVT, ORM, CRUD, JWT, OAuth, SSL, TLS, PEP8, PEP20, PyPI, Conda, Pipenv, Poetry')
 >DB_NAME = 'interview.db'
 
-PythonPro-Interviewer/
+Python-Interviewer/
 ├── main.py
 ├── backend.py
 ├── init_db.py
@@ -37,9 +37,9 @@ PythonPro-Interviewer/
 #### Установка virtualenv для Python 3.8
 >sudo apt install python3.8-venv
 #### Клонирование репозитория
->git clone https://github.com/serge-auro/PythonPro-Interviewer.git
+>git clone https://github.com/Anatolium/Python-Interviewer.git
 #### Переход в директорию проекта
->cd PythonPro-Interviewer/
+>cd Python-Interviewer/
 ##### Создание виртуального окружения
 >python3 -m venv .venv
 ##### Активация виртуального окружения
