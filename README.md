@@ -1,64 +1,164 @@
-# PythonPro-Interviewer
-PythonPro Interviewer is a bot-trainer that will help you prepare for an interview for a Python developer position. The bot asks Python-related questions and checks your answers, helping you sharpen your skills and get ready for real interviews.
+# AI-Python-Interviewer
 
-PythonPro Interviewer — это Telegram-бот для подготовки к собеседованиям на позицию Python-разработчика. Бот задает вопросы по Python, проверяет текстовые и голосовые ответы с помощью OpenAI GPT-4o и Whisper API, помогая оттачивать навыки и готовиться к реальным интервью. Вопросы хранятся в базе данных SQLite и загружаются из CSV-файла.
+**AI-Python-Interviewer** — Telegram-бот для подготовки к техническим собеседованиям на позицию Python-разработчика. Бот проводит тренировочные интервью, задаёт вопросы по Python, анализирует ответы с помощью искусственного интеллекта и предоставляет подробную обратную связь.
 
-## Ключевые технологии
-- **Бэкенд:** Python 3.8+
-- **Фронтенд:** pyTelegramBotAPI для взаимодействия с пользователем
-- **База данных:** SQLite
-- **API:** OpenAI GPT-4o (оценка ответов), OpenAI Whisper (распознавание голоса)
-- **Обработка аудио:** FFmpeg
+Проект помогает проверить знания, выявить пробелы в подготовке и повысить уверенность перед реальным собеседованием.
 
-## Запуск бота
-Для успешной работы бота необходимо создать файл в проекте config.py и указать переменные окружения, пример:
->BOT_TOKEN = '123:ABC123'
->OPENAI_API_KEY = 'sk-proj-12345'
->OPENAI_WHISPER_API_KEY = 'sk-proj-12345'
->SYSTEM_PROMPT = ('You are an evaluator. Please respond in Russian to each input with a strict format: "<Верно/Неверно> || <Comment>". Where "<Верно/Неверно>" is either "Верно" or "Неверно" based on the evaluation of the input, "||" is a separator, and "<Comment>" is a large brief comment explaining the evaluation, up to 3000 characters. Consider that the interviewee is a Junior Python Developer. Provide motivation to Junior Python Developer. ')
->WHISPER_PROMPT = ('Jupyter, Anaconda, PostgreSQL, MySQL, SQLite, Redis, MongoDB, GraphQL, Jenkins, TravisCI, CircleCI, GitLab, Bitbucket, Heroku, DigitalOcean, Netlify, Vercel, Shell, PowerShell, CommandLine, CLI, IDE, VSCode, IntelliJ, DevOps, CI/CD, UnitTesting, TDD, BDD, Cypress, Mocha, Jest, Chai, Jasmine, Webpack, Babel, ESLint, Prettier, Flask, Django, TensorFlow, PyTorch, SciPy, Keras, OpenCV, ScikitLearn, FastAPI, Celery, Docker, AWS, Azure, Lambda, Serverless, Terraform, Ansible, SOLID, DRY, KISS, YAGNI, MVC, MVT, ORM, CRUD, JWT, OAuth, SSL, TLS, PEP8, PEP20, PyPI, Conda, Pipenv, Poetry')
->DB_NAME = 'interview.db'
+## Возможности
 
-PythonPro-Interviewer/
-├── main.py
-├── backend.py
-├── init_db.py
-├── db_from_csv.py
-├── config.py
-├── PythonTest.csv
-├── interview.db
+- **Тренировочное интервью:** последовательная выдача вопросов по Python из подготовленной базы данных.
+- **Анализ ответов с помощью AI:** проверка ответов через OpenAI API с использованием настроенной языковой модели.
+- **Оценка знаний:** каждый ответ получает оценку «Верно» или «Неверно».
+- **Подробная обратная связь:** объяснение ошибок, разбор ответа и рекомендации по улучшению знаний.
+- **Голосовые ответы:** возможность отвечать на вопросы голосовыми сообщениями.
+- **Распознавание речи:** преобразование голосовых ответов в текст с помощью OpenAI Whisper API.
+- **Управление интервью:** возможность завершить интервью в любой момент и продолжить его позже.
+- **Статистика:** просмотр результатов интервью, включая общее количество вопросов, число правильных и неправильных ответов и процент правильных ответов.
 
+## Демонстрация работы
 
-## Инструкция разворачивания на сервере:
-#### Обновление списка пакетов
->sudo apt update
-#### Установка pip
->sudo apt install python3-pip
-#### Установка virtualenv для Python 3.8
->sudo apt install python3.8-venv
-#### Клонирование репозитория
->git clone https://github.com/serge-auro/PythonPro-Interviewer.git
-#### Переход в директорию проекта
->cd PythonPro-Interviewer/
-##### Создание виртуального окружения
->python3 -m venv .venv
-##### Активация виртуального окружения
->source .venv/bin/activate
-##### Создание файла конфигурации
-##### (предполагается, что содержимое config.py у вас уже есть и вы его добавите самостоятельно)
-##### Установка необходимых пакетов
->pip install --upgrade pip
->pip install pyTelegramBotAPI openai requests python-dotenv ffmpeg-python
-##### Установка ffmpeg
->sudo apt install ffmpeg
-##### Инициализация базы данных: запустите в репозитории
->python3 init_db.py
-##### Загрузка вопросов: запустить в репозитории
->python3 db_from_csv.py
-##### Убедитесь, что файл easyoffer.csv находится в корне проекта
-##### Запуск бота
->python3 main.py
+### 1. Начало интервью
 
+![Начало интервью](images/pict-fl-1.jpg)
 
-### License
-This project is licensed under the [Apache-2.0 license](http://www.apache.org/licenses).
+### 2. Пример вопроса голосом и ответ
+
+![Вопрос голосом](images/pict-fl-2.jpg)
+
+### 3. Окончание и статистика интервью
+
+![Статистика интервью](images/pict-fl-3.jpg)
+
+## Как работает бот
+
+1. Пользователь запускает бота в Telegram и начинает интервью.
+2. Бот выбирает вопрос из базы данных и отправляет его пользователю.
+3. Пользователь отвечает текстом или голосовым сообщением.
+4. Если ответ голосовой, бот преобразует аудио в текст с помощью OpenAI Whisper API.
+5. Полученный текст передаётся языковой модели OpenAI для анализа.
+6. Бот возвращает оценку ответа («Верно» / «Неверно»), подробный разбор и рекомендации.
+7. Пользователь может продолжить интервью, завершить его или посмотреть статистику.
+
+## Используемые технологии
+
+| Компонент | Технология | Назначение |
+|---|---|---|
+| Язык программирования | Python 3.8+ | Основная логика приложения |
+| Telegram API | pyTelegramBotAPI | Взаимодействие с пользователем |
+| База данных | SQLite | Хранение вопросов и данных интервью |
+| AI-анализ | OpenAI API | Оценка и разбор ответов |
+| Распознавание речи | OpenAI Whisper API | Преобразование голосовых ответов в текст |
+| Обработка аудио | FFmpeg | Обработка и конвертация аудиофайлов |
+
+## Структура проекта
+
+```text
+AI-Python-Interviewer/
+│
+├── main.py          # Основной файл, запуск Telegram-бота
+├── backend.py       # Логика обработки и анализа ответов
+├── init_db.py       # Инициализация базы данных
+├── db_from_csv.py   # Загрузка вопросов из CSV
+├── config.py        # Токены, настройки API и промпты
+├── PythonTest.csv   # База вопросов по Python
+├── interview.db     # База данных SQLite
+└── README.md        # Документация проекта
+```
+
+## Требования
+
+- Python 3.8 или выше.
+- Telegram-бот, зарегистрированный через [@BotFather](https://t.me/BotFather).
+- API-ключ OpenAI с доступом к используемым моделям.
+- FFmpeg.
+
+## Установка и запуск
+
+### 1. Клонирование репозитория
+
+```bash
+git clone https://github.com/Anatolium/AI-Python-Interviewer.git
+cd AI-Python-Interviewer
+```
+
+### 2. Создание виртуального окружения
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+### 3. Установка зависимостей
+
+Обновите pip и установите необходимые библиотеки:
+
+```bash
+pip install --upgrade pip
+pip install pyTelegramBotAPI openai requests python-dotenv ffmpeg-python
+```
+
+### 4. Установка FFmpeg
+
+Для Ubuntu/Debian:
+
+```bash
+sudo apt update
+sudo apt install ffmpeg
+```
+
+### 5. Настройка конфигурации
+
+Создайте файл `config.py` в корневой директории проекта.
+
+Укажите в нём необходимые параметры:
+
+```python
+BOT_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"
+OPENAI_API_KEY = "YOUR_OPENAI_API_KEY"
+OPENAI_WHISPER_API_KEY = "YOUR_OPENAI_WHISPER_API_KEY"
+
+SYSTEM_PROMPT = "Your system prompt"
+WHISPER_PROMPT = "Your Whisper prompt"
+
+DB_NAME = "interview.db"
+```
+
+- `BOT_TOKEN` — токен Telegram-бота, полученный через BotFather.
+- `OPENAI_API_KEY` — API-ключ для анализа ответов.
+- `OPENAI_WHISPER_API_KEY` — API-ключ для распознавания голосовых сообщений.
+- `SYSTEM_PROMPT` — системный промпт, определяющий правила оценки и формат обратной связи.
+- `WHISPER_PROMPT` — подсказка для распознавания профессиональной терминологии.
+- `DB_NAME` — имя файла базы данных SQLite.
+
+Настройки языковой модели и параметры её работы также задаются в `config.py`.
+
+**Важно:** не публикуйте `config.py` с реальными токенами и API-ключами в открытом репозитории.
+
+### 6. Инициализация базы данных
+
+Создайте структуру базы данных:
+
+```bash
+python init_db.py
+```
+
+Загрузите вопросы из CSV-файла:
+
+```bash
+python db_from_csv.py
+```
+
+Убедитесь, что файл `PythonTest.csv` находится в корневой директории проекта.
+
+### 7. Запуск бота
+
+```bash
+python main.py
+```
+
+После запуска бот готов принимать сообщения в Telegram.
+
+## Лицензия
+
+Проект распространяется под лицензией [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+
