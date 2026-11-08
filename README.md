@@ -161,4 +161,3 @@ python main.py
 ## Лицензия
 
 Проект распространяется под лицензией [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
-
